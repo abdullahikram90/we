@@ -1,12 +1,16 @@
+import Image from "next/image"; // ✅ Correct import
+
 export default function Account() {
   return (
     <div className="min-h-screen bg-gradient-to-r from-teal-400 via-cyan-500 to-indigo-600 p-5 flex items-center justify-center">
       <div className="w-full max-w-lg bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-xl border border-white/20">
         {/* Profile Section */}
         <div className="flex items-center space-x-4 pb-4 border-b border-white/20">
-          <img
-            src="https://i.pravatar.cc/100"
+          <Image
+            src="/vercel.svg"   // ✅ Just put the filename (public/file.svg)
             alt="Profile"
+            width={64}
+            height={64}
             className="w-16 h-16 rounded-full border-2 border-cyan-400 shadow-lg"
           />
           <div>
