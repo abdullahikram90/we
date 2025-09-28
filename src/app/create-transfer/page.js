@@ -7,27 +7,11 @@ export default function CreateTransfer() {
   const [mode, setMode] = useState("link"); // link | email
 
   return (
-    <div className="p-4">
-      <div className="flex space-x-4 mb-4">
-        <button
-          className={`px-4 py-2 rounded ${
-            mode === "link" ? "bg-blue-500 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setMode("link")}
-        >
-          Get a Link
-        </button>
-        <button
-          className={`px-4 py-2 rounded ${
-            mode === "email" ? "bg-blue-500 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setMode("email")}
-        >
-          Send as Email
-        </button>
+    <div className="min-h-screen bg-gradient-to-r from-teal-400 via-cyan-500 to-indigo-600
+ p-5 flex items-center justify-center">
+      <div className="w-full max-w-lg">
+        <FileUploadForm mode={mode} />
       </div>
-
-      <FileUploadForm mode={mode} />
     </div>
   );
 }
