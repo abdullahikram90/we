@@ -2,17 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Plus, Send, Inbox, Bookmark, User } from "lucide-react";
+import { Home,Plus, Send, Inbox, Bookmark, User } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
 
   const navItems = [
-    { href: "/create-transfer", icon: <Plus className="w-6 h-6" />, label: "New" },
-    { href: "/sent", icon: <Send className="w-6 h-6" />, label: "Sent" },
-    { href: "/received", icon: <Inbox className="w-6 h-6" />, label: "Received" },
-    { href: "/saved", icon: <Bookmark className="w-6 h-6" />, label: "Saved" },
-    { href: "/account", icon: <User className="w-6 h-6" />, label: "Account" },
+    { href: "/", icon: <Home className="w-6 h-6 text-white" />, label: "Home" },
+    { href: "/create-transfer", icon: <Plus className="w-6 h-6 text-white" />, label: "New" },
+    { href: "/sent", icon: <Send className="w-6 h-6 text-white" />, label: "Sent" },
+    { href: "/received", icon: <Inbox className="w-6 h-6 text-white" />, label: "Received" },
+    { href: "/saved", icon: <Bookmark className="w-6 h-6 text-white" />, label: "Saved" },
+    { href: "/account", icon: <User className="w-6 h-6 text-white" />, label: "Account" },
   ];
 
   return (
@@ -27,8 +28,8 @@ export default function Navbar() {
               href={item.href}
               className={`flex flex-col items-center gap-1 text-xs transition-all duration-300 ${
                 pathname === item.href
-                  ? "text-indigo-600 font-semibold"
-                  : "text-gray-300 hover:text-white"
+                  ? "font-semibold"
+                  : ""
               }`}
             >
               <div
@@ -40,7 +41,7 @@ export default function Navbar() {
               >
                 {item.icon}
               </div>
-              <span>{item.label}</span>
+              <span className="text-white">{item.label}</span>
             </Link>
           ))}
         </div>
@@ -54,8 +55,8 @@ export default function Navbar() {
             href={item.href}
             className={`flex flex-col items-center text-xs transition-all duration-300 ${
               pathname === item.href
-                ? "text-indigo-600 font-semibold"
-                : "text-gray-300 hover:text-white"
+                ? "font-semibold"
+                : ""
             }`}
           >
             <div
@@ -67,7 +68,7 @@ export default function Navbar() {
             >
               {item.icon}
             </div>
-            <span>{item.label}</span>
+            <span className="text-white">{item.label}</span>
           </Link>
         ))}
       </nav>
