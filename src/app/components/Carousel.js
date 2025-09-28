@@ -26,7 +26,7 @@ export default function Carousel() {
   const prev = () => setCurrent((prev) => (prev - 1 + images.length) % images.length);
 
   return (
-    <div className="relative w-full  h-[650px] bg-gradient-to-r from-teal-400 via-cyan-500 to-indigo-600 flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-screen bg-gradient-to-r from-teal-400 via-cyan-500 to-indigo-600 flex items-center justify-center overflow-hidden">
       {/* Carousel Images (with fade transition) */}
       {images.map((img, index) => (
         <div
