@@ -8,27 +8,69 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const navItems = [
-    { href: "/create-transfer", icon: <Plus />, label: "New" },
-    { href: "/sent", icon: <Send />, label: "Sent" },
-    { href: "/received", icon: <Inbox />, label: "Received" },
-    { href: "/saved", icon: <Bookmark />, label: "Saved" },
-    { href: "/account", icon: <User />, label: "Account" },
+    { href: "/create-transfer", icon: <Plus className="w-6 h-6" />, label: "New" },
+    { href: "/sent", icon: <Send className="w-6 h-6" />, label: "Sent" },
+    { href: "/received", icon: <Inbox className="w-6 h-6" />, label: "Received" },
+    { href: "/saved", icon: <Bookmark className="w-6 h-6" />, label: "Saved" },
+    { href: "/account", icon: <User className="w-6 h-6" />, label: "Account" },
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around items-center py-2 shadow-md">
-      {navItems.map((item) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          className={`flex flex-col items-center text-sm ${
-            pathname === item.href ? "text-blue-500" : "text-gray-500"
-          }`}
-        >
-          {item.icon}
-          <span>{item.label}</span>
-        </Link>
-      ))}
-    </nav>
+    <>
+      {/* 🔹 Desktop Sidebar */}
+      <nav className="hidden md:flex fixed left-0 top-0 h-screen w-20 flex-col items-center justify-between py-6 
+        bg-white/20 backdrop-blur-xl border-r border-white/30 shadow-lg">
+        <div className="flex flex-col gap-8">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`flex flex-col items-center gap-1 text-xs transition-all duration-300 ${
+                pathname === item.href
+                  ? "text-indigo-600 font-semibold"
+                  : "text-gray-300 hover:text-white"
+              }`}
+            >
+              <div
+                className={`p-3 rounded-xl transition-all duration-300 ${
+                  pathname === item.href
+                    ? "bg-gradient-to-r from-teal-400 via-cyan-500 to-indigo-600 text-white shadow-lg"
+                    : "bg-white/10 hover:bg-gradient-to-r hover:from-teal-400 hover:via-cyan-500 hover:to-indigo-600 hover:text-white"
+                }`}
+              >
+                {item.icon}
+              </div>
+              <span>{item.label}</span>
+            </Link>
+          ))}
+        </div>
+      </nav>
+
+      {/* 🔹 Mobile Bottom Nav */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white/20 backdrop-blur-xl border-t border-white/30 shadow-lg rounded-t-2xl flex justify-around items-center py-2">
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={`flex flex-col items-center text-xs transition-all duration-300 ${
+              pathname === item.href
+                ? "text-indigo-600 font-semibold"
+                : "text-gray-300 hover:text-white"
+            }`}
+          >
+            <div
+              className={`p-2 rounded-lg transition-all duration-300 ${
+                pathname === item.href
+                  ? "bg-gradient-to-r from-teal-400 via-cyan-500 to-indigo-600 text-white shadow-lg"
+                  : "bg-white/10 hover:bg-gradient-to-r hover:from-teal-400 hover:via-cyan-500 hover:to-indigo-600 hover:text-white"
+              }`}
+            >
+              {item.icon}
+            </div>
+            <span>{item.label}</span>
+          </Link>
+        ))}
+      </nav>
+    </>
   );
 }
